@@ -1,0 +1,21 @@
+// This is a dummy class so that LFPs can be easily plotted using NEURON Graphs
+//
+// Each instance of LfpElectrode in Python will have a corresponding LfpElectrode object in NEURON
+// To use:
+// In NEURON, Graph > Current Axis > Plot What? > Objects > LfpElectrode[0].value
+// In Tools > RunControl, set Points plotted/ms to 1/sampling_period (to avoid plotting unsampled regions)
+// Init & Run will show the LFP value of the first inserted electrode
+//
+// Notes:
+// The values are updated at the sampling_period of the LfpElectrode
+//
+// LFP value can also be read out with h.LfpElectrode[i].value
+//
+// When using the values with NEURON's e.g. Vector.record(), make sure to use the same sampling
+// period that was used in LfpElectrode
+//
+
+begintemplate LfpElectrode
+public value
+value = 0.0
+endtemplate LfpElectrode
