@@ -2,13 +2,13 @@
 [![codecov](https://codecov.io/gh/JustasB/LFPsimpy/branch/master/graph/badge.svg)](https://codecov.io/gh/JustasB/LFPsimpy)
 [![PyPI version](https://badge.fury.io/py/LFPsimpy.svg)](https://badge.fury.io/py/LFPsimpy)
 
-# LFPsimpy: A non-invasive, MPI-compatible Python package to compute Local Field Potentials of [NEURON simulator](https://neuron.yale.edu) models
+# LFPsimpy: A zero-model-modification, MPI-compatible Python package to compute Local Field Potentials of [NEURON simulator](https://neuron.yale.edu) models
 
-**Non-invasive:** With LFPsimpy, there is no need to modify or re-write a NEURON model to fit a particular pattern or style. Given an existing NEURON model, just add a few Python lines to specify the location and parameters of the LFP electrode. Then run the simulation and plot or further process the LFP signal.
+**Zero-modification:** With LFPsimpy, there is no need to modify or re-write a NEURON model to fit a particular pattern or style. Given an existing NEURON model (HOC/Python/cell/network), just add a few Python lines to specify the location and parameters of the LFP electrode. Then run the simulation and plot or further process the LFP signal.
 
 **Python-based:** The package is written in pure Python. Download the Python source code and modify or extend it using a familiar language. A small [.HOC file](https://www.neuron.yale.edu/neuron/static/new_doc/programming/hocsyntax.html) allows plotting the LFP signal using native NEURON graphs.
 
-**Multiple LFP methods:** `Line`, `Point`, and `RC` methods of [Parasuram et. al. (2016)]( http://journal.frontiersin.org/article/10.3389/fncom.2016.00065/abstract) are implemented. Extend the Python source code to use a custom algorithm.
+**Multiple LFP algorithms:** `Line`, `Point`, and `RC` methods of [Parasuram et. al. (2016)]( http://journal.frontiersin.org/article/10.3389/fncom.2016.00065/abstract) are implemented. Extend the Python source code to use a custom algorithm.
 
 **Unlimited electrodes:** Place any number of LFP electrodes in arbitrary 3D locations to simulate multi-electrode arrays.
 
