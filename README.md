@@ -6,9 +6,9 @@
 
 **Non-invasive:** With LFPsimpy, there is no need to modify or re-write a NEURON model to fit a particular pattern or style. Given an existing NEURON model, just add a few Python lines to specify the location and parameters of the LFP electrode. Then run the simulation and plot or further process the LFP signal.
 
-**Python-based:** The package is written in pure Python. A small [.HOC file](https://www.neuron.yale.edu/neuron/static/new_doc/programming/hocsyntax.html) allows plotting the LFP signal using native NEURON graphs. Download the package Python code and modify or extend it using a familiar language.
+**Python-based:** The package is written in pure Python. Download the Python source code and modify or extend it using a familiar language. A small [.HOC file](https://www.neuron.yale.edu/neuron/static/new_doc/programming/hocsyntax.html) allows plotting the LFP signal using native NEURON graphs.
 
-**Multiple LFP methods:** `Line`, `Point`, and `RC` methods of [Parasuram et. al. (2016)]( http://journal.frontiersin.org/article/10.3389/fncom.2016.00065/abstract) are implemented. Extend the Python the source code to use a custom algorithm.
+**Multiple LFP methods:** `Line`, `Point`, and `RC` methods of [Parasuram et. al. (2016)]( http://journal.frontiersin.org/article/10.3389/fncom.2016.00065/abstract) are implemented. Extend the Python source code to use a custom algorithm.
 
 **Unlimited electrodes:** Place any number of LFP electrodes in arbitrary 3D locations to simulate multi-electrode arrays.
 
@@ -31,7 +31,7 @@ Installation depends on how you installed NEURON simulator (installed vs. compil
 ## If you installed a downloaded NEURON package
 Download and extract [this LFPsimpy ZIP file](https://github.com/JustasB/LFPsimpy/archive/master.zip) to a known folder. Then note the location of the `LFPsimpy` sub-folder.
 
-Then append the `LFPsimpy` parent folder location to your `$PYTHONPATH` environmental variable. E.g. `export PYTHONPATH=$PYTHONPATH:/path/to/LFPsimpy-master/`. Place this line in your shell startup file (e.g. `~/.bashrc`) to ensure the variable remains set after an OS restart.
+Then append the `LFPsimpy` parent folder location to your `$PYTHONPATH` environmental variable. E.g. `export PYTHONPATH=$PYTHONPATH:/path/to/LFPsimpy-master/`. Place the line in your shell startup file (e.g. `~/.bashrc`) to ensure the variable remains set after an OS restart.
 
 ## If you compiled NEURON+Python
 
@@ -43,14 +43,17 @@ To install the library, simply type in `pip install LPFsimpy` in your terminal.
 To use the library, first load your HOC or Python model in NEURON, insert LFP electrode(s), run simulation, and plot/process the electrode signal.
 
 ```
-# Load your cell
+# Load your cell or network model
 from neuron import h
-run_scripts_build_cell_etc()
+run_scripts_build_model_etc()
 
 # Load the LFP library
 from LFPsimpy import LfpElectrode
 
-# Place an electrode
+# Place an LFP electrode
+# x,y,z in microns
+# sampling_period in ms. E.g. 0.1 => 10kHz
+# method: either 'Line', 'Point', or 'RC'. See: Parasuram et. al. (2016)
 le = LfpElectrode(x=100, y=50, z=0, sampling_period=0.1, method='Line')
 
 h.tstop = 100 
@@ -63,7 +66,7 @@ le.values  # Contains the sampled LFP voltage (nV)
 **More examples** are described in [this Jupyter notebook](https://github.com/JustasB/hoc2swc/blob/master/examples.ipynb).
 
 # NEURON GUI plotting
-When using the NEURON GUI, you can plot the LFP electrode value with:
+When using the NEURON GUI, after the electrode is inserted, you can plot the LFP electrode value with:
 
 `Graph > Current Axis > Plot What? > Objects > LfpElectrode[0].value`
 then
@@ -72,6 +75,8 @@ then
 `Init & Run` will show the LFP value of the first inserted electrode
 
 # Issues
+While NEURON allows running simulations past the `tstop` value, this library does not support this usage pattern. If `h.t` exceeds `h.tstop` a warning is shown and the LFP signal is not computed.
+
 If you encounter an issue, first make sure it's not due to NEURON itself. If it is, please contact the [NEURON team](https://www.neuron.yale.edu/phpBB/). If the issue is with this library, please create an [issue on Github](https://github.com/JustasB/LFPsimpy/issues).
 
 # Contributing
@@ -79,4 +84,4 @@ If you encounter an issue, first make sure it's not due to NEURON itself. If it 
 To contribute, please open an issue first and discuss your plan for contributing. Then fork this repository and commit a pull-request with your changes.
 
 # Acknowledgements
-LFPsim is a Python reimplementation of [LFPsim](https://github.com/compneuro/LFPsim) described in [Parasuram et. al. (2016)]( http://journal.frontiersin.org/article/10.3389/fncom.2016.00065/abstract). When using this library in research projects, please cite the original publication and this repository.
+LFPsimpy is a Python re-implementation of [LFPsim](https://github.com/compneuro/LFPsim) described in [Parasuram et. al. (2016)]( http://journal.frontiersin.org/article/10.3389/fncom.2016.00065/abstract). When using this library in research projects, please cite the original publication and this repository.
