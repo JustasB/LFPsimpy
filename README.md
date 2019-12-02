@@ -76,6 +76,11 @@ then
 
 `Init & Run` will show the LFP value of the first inserted electrode
 
+# How It Works
+LFPsimpy is a Python re-implementation of [LFPsim](https://github.com/compneuro/LFPsim) described in [Parasuram et. al. (2016)]( http://journal.frontiersin.org/article/10.3389/fncom.2016.00065/abstract). The original publication estimated LFPs using three different methods and also did not require a NEURON model to be in a specific format. However, the original implementation is in HOC, is not MPI-compatible (uses `extracellular`), and places restrictions on the number of electrodes that can be placed in a simulation. 
+
+This library encapsulates the three LFP estimation methods described in the paper and uses the more efficient NEURON's [`i_membrane_`](https://www.neuron.yale.edu/neuron/static/new_doc/simctrl/cvode.html#CVode.use_fast_imem) method. These changes allow arbitrary number of electrodes and allows computing the LFP in MPI-parallelized models.
+
 # Issues
 While NEURON allows running simulations past the `tstop` value, this library does not support this usage pattern. If `h.t` exceeds `h.tstop` a warning is shown and the LFP signal is not computed.
 
