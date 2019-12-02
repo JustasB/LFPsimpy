@@ -1,5 +1,5 @@
 import os, pytest
-from LFPsimpy import LfpElectrode
+from ..LFPsimpy import LfpElectrode
 
 def create_sec():
     from neuron import h
