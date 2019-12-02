@@ -118,13 +118,14 @@ class LfpElectrode:
 
         if h.t > h.tstop:
             if h.t - h.tstop > h.dt and not self.is_parallel or self.parallel_ctx.id() == 0:
-                print('Warning: h.t (%s) is more than h.tstop (%s). Please ensure h.tstop is set before '
-                      'h.run() or pc.psolve(). Stopping LFP collection.' % (h.t, h.tstop))
+                print('Note: h.t (%s) is more than h.tstop (%s). Please ensure h.tstop is set before '
+                      'h.run() or pc.psolve(). Stopping LFP collection. If h.t and h.tstop are within rounding error, '
+                      'you can safely ignore this message.' % (h.t, h.tstop))
 
             return
 
         # There is a bug where under MPI, due to differences in rounding errors on different ranks,
-        # the last NetStim event does not always get delivered on all ranks causing an MPI timeout durin py_gather.
+        # the last NetStim event does not always get delivered on all ranks causing an MPI timeout during py_gather.
         # This workaround avoids collecting on the very last step. But it requires that h.tstop
         # be set each time simulation is advanced.
         if h.t > h.tstop - self.sampling_period:

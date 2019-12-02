@@ -122,7 +122,12 @@ def mpi_one_sec():
     assert len(le.times) == 0
     assert len(le.values) == 0
 
-    run_sim()
+    pc.setup_transfer()
+    pc.timeout(1)
+    h.cvode_active(0)
+    pc.set_maxstep(1)
+    h.stdinit()
+    pc.psolve(10)
 
     if mpirank == 0:
         assert len(le.times) > 0
