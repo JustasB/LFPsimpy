@@ -35,7 +35,7 @@ Then append the `LFPsimpy` parent folder location to your `$PYTHONPATH` environm
 
 ## If you compiled NEURON+Python
 
-To install the library, simply type in `pip install LPFsimpy` in your terminal.
+To install the library, simply type in `pip install lfpsimpy` in your terminal.
 
 
 # Usage
