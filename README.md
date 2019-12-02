@@ -56,11 +56,13 @@ from LFPsimpy import LfpElectrode
 # method: either 'Line', 'Point', or 'RC'. See: Parasuram et. al. (2016)
 le = LfpElectrode(x=100, y=50, z=0, sampling_period=0.1, method='Line')
 
-h.tstop = 100 
+# Run the simulation
+h.tstop = 100 # <- important!
 h.run()
 
+# Plot/process LFP values
 le.times   # Contains the sampled LFP times
-le.values  # Contains the sampled LFP voltage (nV)
+le.values  # Contains the corresponding sampled LFP voltage values (nV)
 ```
 
 **More examples** are described in [this Jupyter notebook](https://github.com/JustasB/hoc2swc/blob/master/examples.ipynb).
@@ -84,4 +86,4 @@ If you encounter an issue, first make sure it's not due to NEURON itself. If it 
 To contribute, please open an issue first and discuss your plan for contributing. Then fork this repository and commit a pull-request with your changes.
 
 # Acknowledgements
-LFPsimpy is a Python re-implementation of [LFPsim](https://github.com/compneuro/LFPsim) described in [Parasuram et. al. (2016)]( http://journal.frontiersin.org/article/10.3389/fncom.2016.00065/abstract). When using this library in research projects, please cite the original publication and this repository.
+LFPsimpy is a Python re-implementation of [LFPsim](https://github.com/compneuro/LFPsim) described in [Parasuram et. al. (2016)]( http://journal.frontiersin.org/article/10.3389/fncom.2016.00065/abstract). When using LFPsimpy in research projects, please cite the original publication and this repository.
