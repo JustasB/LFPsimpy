@@ -38,6 +38,7 @@ before_install:
 install:
   - pip install -r requirements.txt
   - python setup.py develop
+  - pip install jupyter matplotlib
 script:
   - py.test --cov=LFPsimpy tests/
 after_success:
