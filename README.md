@@ -65,7 +65,7 @@ le.times   # Contains the sampled LFP times
 le.values  # Contains the corresponding sampled LFP voltage values (nV)
 ```
 
-**More examples** are described in [this Jupyter notebook](https://github.com/JustasB/hoc2swc/blob/master/examples.ipynb).
+**More examples** are described in [this Jupyter notebook](https://github.com/JustasB/LFPsimpy/blob/master/examples.ipynb).
 
 # NEURON GUI plotting
 When using the NEURON GUI, after the electrode is inserted, you can plot the LFP electrode value with:
