@@ -4,8 +4,12 @@ from ..LFPsimpy import LfpElectrode
 def test_examples_notebook():
     import os
     os.system("jupyter nbconvert --to python --output examples.py 'examples.ipynb'")
-    os.system("sed -i '1iimport matplotlib; matplotlib.use(\"Agg\");' examples.py") # Disable interactive plots
-    import examples # Fail on any notebook errors
+
+    # Disable interactive plots
+    os.system("sed -i '1iimport matplotlib; matplotlib.use(\"Agg\");' examples.py")
+
+    # Run the notebook
+    os.system("python examples.py")
 
 
 def create_sec():
