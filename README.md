@@ -91,4 +91,4 @@ If you encounter an issue, first make sure it's not due to NEURON itself. If it 
 To contribute, please open an issue first and discuss your plan for contributing. Then fork this repository and commit a pull-request with your changes.
 
 # Acknowledgements
-LFPsimpy is a Python re-implementation of [LFPsim](https://github.com/compneuro/LFPsim) described in [Parasuram et. al. (2016)]( http://journal.frontiersin.org/article/10.3389/fncom.2016.00065/abstract). When using LFPsimpy in research projects, please cite the original publication and this repository.
+LFPsimpy is a Python re-implementation of [LFPsim](https://github.com/compneuro/LFPsim) described in [Parasuram et. al. (2016)]( http://journal.frontiersin.org/article/10.3389/fncom.2016.00065/abstract). When using LFPsimpy in research projects, please cite the original publication and this repository, which is maintained by [Justas Birgiolas](https://www.linkedin.com/in/justasbirgiolas).
